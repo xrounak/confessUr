@@ -1,0 +1,122 @@
+.header {
+  width: auto;
+  height: 60px;
+  background-color: rgba(33,37,41)!important;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  /* Glow and card effect */
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.1), 
+              0 0 16px rgba(128, 0, 255, 0.15), 
+              0 0 24px rgba(0, 191, 255, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  color: #ffffff;
+  letter-spacing: 1px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.05), 
+               0 0 6px rgba(128, 0, 255, 0.2);
+
+  text-shadow:
+              0 1px 2px rgba(255, 255, 255, 0.1),
+              0 0 5px rgba(128, 0, 255, 0.3),
+              0 0 10px rgba(128, 0, 255, 0.2);
+
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.username {
+  color: #e0e0e0;
+  font-size: 0.95rem;
+}
+
+/* Glowing Logout Button */
+.logoutButton {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #8000ff;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 0, 255, 0.3);
+}
+
+.logoutButton:hover {
+  background: linear-gradient(45deg, #ff00ff, #8000ff, #00bfff);
+  color: #121212;
+  box-shadow: 0 0 12px #ff00ff, 0 0 18px #8000ff, 0 0 24px #00bfff;
+  border-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .header {
+    margin-left: 0;
+    padding: 0 1rem;
+    height: 60px;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+  .rightSection {
+    gap: 0.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .header {
+    padding: 0 0.5rem;
+    height: 60px;
+  }
+  .title {
+    font-size: 1rem;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #121212;
+  color: #fff;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #222;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.toggleBtn {
+  background: none;
+  border: none;
+  color: #ccc;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.toggleBtn:hover {
+  color: #fff;
+}

@@ -1,0 +1,44 @@
+.viewpage {
+  background-color: #181818;
+  color: #f1f1f1;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  width:auto;
+}
+
+a {
+  color: #61dafb;
+}
+
+button {
+  background-color: #282c34;
+  color: #f1f1f1;
+  border: none;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+input, textarea {
+  background-color: #222;
+  color: #f1f1f1;
+  border: 1px solid #444;
+  padding: 0.5em;
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .viewpage {
+    flex-direction: column;
+    padding: 0.5rem;
+  }
+}
+@media (max-width: 480px) {
+  .viewpage {
+    flex-direction: column;
+    padding: 0.2rem;
+    font-size: 0.95rem;
+  }
+}

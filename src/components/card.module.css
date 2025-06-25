@@ -1,0 +1,201 @@
+.card {
+  position: relative; /* Required for positioning delete button */
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 2rem auto;
+  background-image: linear-gradient(
+    163deg,
+    #ff00ff 0%,
+    #8000ff 50%,
+    #00bfff 100%
+  );
+  border-radius: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(255, 0, 255, 0.15),
+              0 0 20px rgba(128, 0, 255, 0.15),
+              0 0 28px rgba(0, 191, 255, 0.1);
+}
+
+.card:hover {
+  box-shadow: 0 0 24px rgba(255, 0, 255, 0.3),
+              0 0 32px rgba(128, 0, 255, 0.25),
+              0 0 40px rgba(0, 191, 255, 0.2);
+}
+
+.cardInner {
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  border-radius: 20px;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  color: white;
+}
+
+.cardInner:hover {
+  transform: scale(0.98);
+  box-shadow: 0 0 20px #ff00ff44,
+              0 0 28px #8000ff33,
+              0 0 36px #00bfff22;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  color: #cccccc;
+}
+
+.userkey {
+  font-weight: 500;
+}
+
+.reactions {
+  font-size: 0.85rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 12px;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.body {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.deleteBtn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.deleteBtn:hover {
+  background-color: #e63946;
+  transform: scale(1.05);
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .card {
+    max-width: 98vw;
+    margin: 1rem auto;
+    padding: 0.1rem;
+  }
+
+  .cardInner {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .body {
+    font-size: 0.95rem;
+  }
+
+  .deleteBtn {
+    bottom: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    max-width: 100vw;
+    margin: 0.5rem 0;
+    border-radius: 12px;
+  }
+
+  .cardInner {
+    padding: 0.5rem;
+    border-radius: 12px;
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  .body {
+    font-size: 0.9rem;
+  }
+
+  .deleteBtn {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+.deleteIcon {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  font-size: 1.2rem;
+  color: #888;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+.deleteIcon:hover {
+  color: #ff4d4d;
+  transform: scale(1.15);
+}
+
+.tagContainer {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ccc;
+  padding: 0.3rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
+}
+
+.tag:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+@media (max-width: 480px) {
+  .deleteIcon {
+    bottom: 0.5rem;
+    right: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+  }
+}
