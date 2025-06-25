@@ -1,4 +1,4 @@
-import Sidebar from "./components/Sidebar";
+import Sidebar from "./components/sidebar";
 import styles from "./app.module.css";
 import { useState } from "react";
 import Form from "./components/form";
