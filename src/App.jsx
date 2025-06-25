@@ -1,5 +1,5 @@
 import Sidebar from "./components/sidebar";
-import styles from "./app.module.css";
+import styles from "./App.module.css";
 import { useState } from "react";
 import Form from "./components/form";
 import "bootstrap/dist/css/bootstrap.min.css";
