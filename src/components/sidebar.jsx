@@ -10,7 +10,7 @@ const Sidebar = ({ isOpen, onClose, selectedTab, setSelectedTab }) => {
   const activeIndex = tabs.findIndex((tab) => tab.id === selectedTab);
 
   return (
-    <div className={`${styles.overlay} ${isOpen ? styles.open : ""}`}>
+    <div className={`${styles.overlay} ${isOpen ? styles.open : ""}`} onClick={() => onClose()}>
       <div className={styles.sidebar}>
         <div className={styles.radioWrapper} style={{ "--total-radio": tabs.length }}>
           <div className={styles.radioContainer}>

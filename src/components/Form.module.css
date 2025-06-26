@@ -4,8 +4,8 @@
   left: 0;
   height: 100vh;
   width: 100vw;
-  background-color: rgba(0, 0, 0, 0.6); /* translucent overlay */
-  z-index: 9999; /* ensures it sits above everything else */
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,8 +22,10 @@
   font-size: 14px;
   box-sizing: border-box;
   z-index: 1000;
+  position: relative;
 }
 
+/* Form Group */
 .formGroup label {
   margin-bottom: 5px;
   color: #717171;
@@ -53,6 +55,87 @@
   border-color: #e81cff;
 }
 
+/* Tag input group */
+.tagInputGroup {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.tagInputGroup input {
+  flex: 1;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: 1px solid #414141;
+  color: #fff;
+  font-family: inherit;
+}
+
+.tagInputGroup input:focus {
+  outline: none;
+  border-color: #40c9ff;
+}
+
+/* Add Tag Button */
+.addTagBtn {
+  background-color: #e81cff; /* neon purple/pink */
+  border: none;
+  padding: 10px 18px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 6px #e81cff;
+}
+
+.addTagBtn:hover {
+  background-color: #b81be0;
+  box-shadow: 0 0 12px #e81cff;
+}
+
+/* Tag badges */
+.tagBadge {
+  display: inline-flex;
+  align-items: center;
+  background-color: #333;
+  color: #e81cff;
+  border: 1px solid #e81cff;
+  border-radius: 999px;
+  padding: 1px 10px;
+  font-size: 13px;
+  margin: 4px 6px 0 0;
+}
+
+.tagBadge:hover{
+  color: #ffffff;
+  text-shadow: 0 0 6px #e81cff;
+
+}
+
+.tagBadge button {
+  background: none;
+  border: none;
+  color: #ff4fff; /* more neon/pink to match theme */
+  font-size: 18px; /* larger for better visibility */
+  font-weight: bold;
+  margin-left: 5px;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease, transform 0.2s ease;
+  padding: 5px;
+}
+
+.tagBadge button:hover {
+  color: #ffffff;
+  transform: scale(1.2);
+  text-shadow: 0 0 6px #e81cff;
+}
+
+/* Submit button */
 .submitBtn {
   font-weight: 600;
   width: 40%;
@@ -75,6 +158,32 @@
   transform: scale(0.95);
 }
 
+/* Close button */
+.closeBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  padding: 0;
+  font-size: 24px;
+  color: #b1b1b1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+  z-index: 1001;
+}
+
+.closeBtn:hover {
+  transform: scale(1.2);
+  color: #fff;
+  text-shadow: 0 0 8px #ffffff, 0 0 12px #ffffff;
+}
+
+/* Responsive: Tablet */
 @media (max-width: 768px) {
   .formContainer {
     width: 90vw;
@@ -82,7 +191,17 @@
     padding: 20px 10px;
     font-size: 13px;
   }
+
+  .closeBtn {
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    font-size: 26px;
+  }
 }
+
+/* Responsive: Mobile */
 @media (max-width: 480px) {
   .formContainer {
     width: 98vw;
@@ -90,54 +209,10 @@
     padding: 10px 2px;
     font-size: 12px;
   }
-}
 
-.closeBtn {
-    position: absolute;
-    top: 12px;
-    right: 12px;
-    width: 36px;
-    height: 36px;
-    background: transparent;
-    /* border: none; */
-    padding: 0;
-    margin: 0;
-    font-size: 24px;
-    line-height: 1;
-    color: #b1b1b1;
-    cursor: pointer;
-    display: flex
-;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
-    z-index: 1001;
-    margin: 0px;
-}
-
-/* Hover effect for desktop */
-.closeBtn:hover {
-  transform: scale(1.2);
-  color: #fff;
-  text-shadow: 0 0 8px #ffffff, 0 0 12px #ffffff;
-}
-
-/* Tablet */
-@media (max-width: 768px) {
   .closeBtn {
-    top: 0px;
-    right: 0px;
-    width: 40px;
-    height: 40px;
-    font-size: 26px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-  .closeBtn {
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     width: 34px;
     height: 34px;
     font-size: 28px;

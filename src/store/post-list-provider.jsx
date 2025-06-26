@@ -1,28 +1,56 @@
-import { createContext, useReducer } from "react"
+import { createContext, useReducer } from "react";
 
 export const Postlistcontext = createContext({
-    postlist: [],
-    addPost: ()=>{},
-    deletePost: ()=>{},
+  postlist: [],
+  addPost: () => {},
+  deletePost: () => {},
 });
 
 const postlistReducer = (currentPostList, action) => {
-    return currentPostList
-}
+  switch (action.type) {
+    case "DELETE_POST":
+      return currentPostList.filter((post) => post.id !== action.payload);
 
-const PostListProvider = ({children}) => {
-    const [postlist, dispatchPostList] = useReducer(postlistReducer, DEFAULT_POST_LIST);
+    case "ADD_POST":
+      const newPostWithId = {
+        ...action.payload,
+        id: (Math.random() * 100000).toFixed(0), // Generate random ID
+        reactions: 0,
+        userkey: "anonymous",
+      };
+      return [newPostWithId, ...currentPostList];
 
-    const addPost = () => {};
+    default:
+      return currentPostList;
+  }
+};
 
-    const deletePost = () => {};
+const PostListProvider = ({ children }) => {
+  const [postlist, dispatchPostList] = useReducer(
+    postlistReducer,
+    DEFAULT_POST_LIST
+  );
 
-    return(
-        <Postlistcontext.Provider value={{postlist, addPost, deletePost}}>
-        {children}
-        </Postlistcontext.Provider>
-    );
-}
+  const addPost = (newPost) => {
+    dispatchPostList({
+      type: "ADD_POST",
+      payload: newPost,
+    });
+  };
+
+  const deletePost = (id) => {
+    dispatchPostList({
+      type: "DELETE_POST",
+      payload: id,
+    });
+  };
+
+  return (
+    <Postlistcontext.Provider value={{ postlist, addPost, deletePost }}>
+      {children}
+    </Postlistcontext.Provider>
+  );
+};
 const DEFAULT_POST_LIST = [
   {
     id: "1",
@@ -34,85 +62,164 @@ const DEFAULT_POST_LIST = [
   },
   {
     id: "2",
-    title: "I miss her",
-    body: "We sat next to each other all semester. I never said a word. She's gone now, and I keep replaying the chances I missed.",
-    reactions: "8",
-    userkey: "anon123",
-    tags: ["regret", "college life"],
+    title: "Lost in the crowd",
+    body: "I walk through campus feeling invisible. I smile, but inside I’m drowning.",
+    reactions: "5",
+    userkey: "invisiguy",
+    tags: ["mental health", "college"],
   },
   {
     id: "3",
-    title: "Library crush",
-    body: "To the girl who wears oversized hoodies in the 3rd floor reading area—I think you’re beautiful.",
-    reactions: "15",
-    userkey: "studiousguy",
-    tags: ["crush", "college", "love"],
+    title: "My first heartbreak",
+    body: "He said he loved me, then ghosted me after a month. I still check his last seen.",
+    reactions: "9",
+    userkey: "shattered",
+    tags: ["breakup", "pain"],
   },
   {
     id: "4",
-    title: "Group project pain",
-    body: "I did 90% of the group project. They added one meme slide and called it a day. I’m tired.",
-    reactions: "21",
-    userkey: "burntout123",
-    tags: ["rant", "college", "group work"],
+    title: "Silent crush",
+    body: "We study in the same library spot. I've never spoken a word, but I think about her all the time.",
+    reactions: "12",
+    userkey: "libraryghost",
+    tags: ["crush", "college"],
   },
   {
     id: "5",
-    title: "Still not over him",
-    body: "It’s been two years and I still check his Instagram like a fool.",
-    reactions: "12",
-    userkey: "ghosted_19",
-    tags: ["breakup", "emotions", "confessions"],
+    title: "Dorm room therapist",
+    body: "My roommate always listens to me cry but never says a word. I think that's love.",
+    reactions: "16",
+    userkey: "gratefulheart",
+    tags: ["roommate", "love", "support"],
   },
   {
     id: "6",
-    title: "Secret talent",
-    body: "I sing alone in the music room at night. No one knows. It’s the only time I feel seen.",
-    reactions: "6",
-    userkey: "hiddenvoice",
-    tags: ["secret", "music", "confessions"],
+    title: "Living two lives",
+    body: "My friends think I'm happy. My journal knows the truth.",
+    reactions: "10",
+    userkey: "twosides",
+    tags: ["mental health", "truth"],
   },
   {
     id: "7",
-    title: "My roommate is a saint",
-    body: "They’ve seen me cry, clean up my messes, and always bring snacks when I’m down. I never say thank you enough.",
-    reactions: "18",
-    userkey: "gratefulgal",
-    tags: ["roommate", "gratitude"],
+    title: "Confession in chalk",
+    body: "I wrote 'I like you' on her whiteboard when she was out. She smiled the next day. I never told her it was me.",
+    reactions: "23",
+    userkey: "chalkheart",
+    tags: ["confession", "crush"],
   },
   {
     id: "8",
-    title: "Fell for my TA",
-    body: "He explains calculus like poetry. I think I attend discussions just to hear him speak.",
-    reactions: "25",
-    userkey: "mathcrush",
-    tags: ["crush", "confession", "college"],
+    title: "The professor smiled at me",
+    body: "It was just a moment. But in that moment, I felt seen.",
+    reactions: "6",
+    userkey: "quietone",
+    tags: ["college", "emotion"],
   },
   {
     id: "9",
-    title: "Mental health is real",
-    body: "I smiled through classes and parties, but I was breaking. I’m finally getting help. To anyone struggling—you're not alone.",
-    reactions: "34",
-    userkey: "healingnow",
-    tags: ["mental health", "support"],
+    title: "Rainy day rescue",
+    body: "He shared his umbrella with me in the rain. I don’t even know his name.",
+    reactions: "14",
+    userkey: "soakedandsmitten",
+    tags: ["random act", "crush"],
   },
   {
     id: "10",
-    title: "First love, final goodbye",
-    body: "She held my hand through freshman year, but we outgrew each other. We ended it with a long walk under orange streetlights.",
-    reactions: "19",
-    userkey: "softheart",
-    tags: ["first love", "breakup"],
+    title: "Late night regrets",
+    body: "Every night at 2AM, I replay the things I never said. It hurts more than I admit.",
+    reactions: "17",
+    userkey: "nightsoul",
+    tags: ["regret", "emotions"],
   },
   {
     id: "11",
-    title: "To the guy with the guitar",
-    body: "You don’t know me, but I hear you play near the dorms every night. It makes the world feel soft again.",
+    title: "Graduation blues",
+    body: "Everyone's celebrating. I'm terrified. I don’t know what comes next.",
+    reactions: "11",
+    userkey: "soonexstudent",
+    tags: ["college", "fear"],
+  },
+  {
+    id: "12",
+    title: "Missed connections",
+    body: "We talked for hours during orientation. I never saw her again. Still think about her sometimes.",
     reactions: "13",
-    userkey: "nightwalker",
-    tags: ["admiration", "music", "confession"],
-  }
+    userkey: "whatifguy",
+    tags: ["missed chance", "college"],
+  },
+  {
+    id: "13",
+    title: "Grocery aisle love",
+    body: "We reached for the same cereal. You smiled. I panicked and left. Still wondering what could’ve been.",
+    reactions: "15",
+    userkey: "breakfastregret",
+    tags: ["strangers", "crush"],
+  },
+  {
+    id: "14",
+    title: "Imposter syndrome is real",
+    body: "Everyone seems so sure of themselves. I feel like I’m faking it all.",
+    reactions: "20",
+    userkey: "notgoodenough",
+    tags: ["college", "insecurity"],
+  },
+  {
+    id: "15",
+    title: "My cat is my therapist",
+    body: "She just curls up next to me when I cry. I owe her more than she’ll ever know.",
+    reactions: "27",
+    userkey: "meowhealer",
+    tags: ["pets", "mental health"],
+  },
+  {
+    id: "16",
+    title: "He smiled at me in the lab",
+    body: "We were both in gloves and goggles. It still felt like a rom-com moment.",
+    reactions: "8",
+    userkey: "chemistryinlab",
+    tags: ["crush", "college"],
+  },
+  {
+    id: "17",
+    title: "Wish I told her sooner",
+    body: "She moved to another city. I never confessed my feelings. I hope she’s happy.",
+    reactions: "22",
+    userkey: "almostlove",
+    tags: ["loss", "regret"],
+  },
+  {
+    id: "18",
+    title: "Cried in the lecture hall",
+    body: "Sat in the back. No one noticed. I’m both glad and sad.",
+    reactions: "18",
+    userkey: "lonelyseat",
+    tags: ["mental health", "college"],
+  },
+  {
+    id: "19",
+    title: "Library angel",
+    body: "I was overwhelmed, and she handed me tissues without a word. Thank you, stranger.",
+    reactions: "19",
+    userkey: "gratefulmind",
+    tags: ["kindness", "strangers"],
+  },
+  {
+    id: "20",
+    title: "Late night piano",
+    body: "Whoever plays piano in the rec hall after 10PM—you soothe my soul.",
+    reactions: "24",
+    userkey: "silentfan",
+    tags: ["music", "admiration"],
+  },
+  {
+    id: "21",
+    title: "Still waiting",
+    body: "He said he’d text after the party. It’s been three weeks. I check my phone anyway.",
+    reactions: "21",
+    userkey: "ghostedagain",
+    tags: ["dating", "heartbreak"],
+  },
 ];
-
 
 export default PostListProvider;

@@ -5,31 +5,45 @@ import Form from "./components/form";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Footer from "./components/footer";
 import Postlist from "./components/postlist";
-import PostListProvider from "./store/post-list-provider";
+import PostListProvider, { Postlistcontext } from "./store/post-list-provider";
 import Header from "./components/header";
+import PostPopup from "./components/postpopup";
+import { useContext } from "react";
+import { CommentProvider } from "./store/comment-provider";
 
 function App() {
   const [selectedTab, setSelectedTab] = useState("home");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [activepostid, activatepostbyid] = useState(6);
 
   return (
     <>
       <PostListProvider>
-        <div className={`${styles.viewpage}`}>
-          <Header toggleSidebar={() => setIsSidebarOpen((prev) => !prev)} />
-          <Sidebar
-            isOpen={isSidebarOpen}
-            onClose={() => setIsSidebarOpen(false)}
-            selectedTab={selectedTab}
-            setSelectedTab={setSelectedTab}
-          />
-          <div className="vw-100">
-            {selectedTab === "create-posts" && <Form submit={setSelectedTab} />}
+        <CommentProvider>
+          <div className={`${styles.viewpage}`}>
+            <Header toggleSidebar={() => setIsSidebarOpen((prev) => !prev)} />
+            <Sidebar
+              isOpen={isSidebarOpen}
+              onClose={() => setIsSidebarOpen(false)}
+              selectedTab={selectedTab}
+              setSelectedTab={setSelectedTab}
+            />
+            <div className="vw-100">
+              {selectedTab === "create-posts" && (
+                <Form selectedtab={setSelectedTab} />
+              )}
 
-            <Postlist></Postlist>
-            <Footer></Footer>
+              <Postlist onpostclick={(id) => activatepostbyid(id)}></Postlist>
+              {activepostid && (
+                <PostPopup
+                  postId={activepostid}
+                  onClose={() => activatepostbyid(null)}
+                />
+              )}
+              <Footer></Footer>
+            </div>
           </div>
-        </div>
+        </CommentProvider>
       </PostListProvider>
     </>
   );

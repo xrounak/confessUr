@@ -1,0 +1,237 @@
+/* PostPopup.module.css */
+.overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: #111; /* darker background */
+  border-radius: 1rem;
+  width: 95%;
+  max-width: 500px;
+  padding: 1.5rem;
+  position: relative;
+  box-shadow: 0 0 20px rgba(128, 0, 255, 0.1),
+              0 0 30px rgba(0, 191, 255, 0.08);
+  overflow-y: auto;
+  max-height: 90vh;
+  color: #eee;
+}
+
+/* Hide scrollbar but allow scrolling */
+.popup::-webkit-scrollbar,
+.commentList::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+.popup,
+.commentList {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.userkey {
+  font-weight: bold;
+  color: #ccc;
+  font-size: 0.95rem;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  color: #aaa;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.closeBtn:hover {
+  color: #ff4d4d;
+}
+
+/* Tags on their own line, right-aligned */
+.tags {
+   display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  color: #bbb;
+  transition: background-color 0.3s ease;
+}
+
+.tag:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  color: #f0f0f0;
+}
+
+.body {
+  font-size: 1rem;
+  color: #ccc;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.actions {
+  margin: 1rem 0;
+}
+
+.iconBtn {
+  background: none;
+  border: none;
+  color: #e63946;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.commentSection {
+  margin-top: 1.5rem;
+  background: #1a1a1a;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(128, 0, 255, 0.08),
+              0 0 16px rgba(0, 191, 255, 0.06);
+  transition: box-shadow 0.3s ease;
+}
+
+.commentSection:hover {
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.15),
+              0 0 28px rgba(128, 0, 255, 0.1),
+              0 0 36px rgba(0, 191, 255, 0.08);
+}
+
+.commentList {
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.comment {
+  background-color: #222;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  color: #ddd;
+  font-size: 0.9rem;
+  box-shadow: 0 0 6px rgba(255, 0, 255, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+.comment:hover {
+  background-color: #2a2a2a;
+}
+
+.commentInput {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 0.75rem;
+}
+
+.commentInput input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: none;
+  background-color: #111;
+  color: #fff;
+  font-size: 0.9rem;
+  outline: none;
+  box-shadow: 0 0 4px rgba(128, 0, 255, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+.commentInput input::placeholder {
+  color: #888;
+}
+
+.commentInput input:focus {
+  background-color: #1c1c1c;
+  box-shadow: 0 0 8px rgba(128, 0, 255, 0.2);
+}
+
+.commentInput button {
+  background-color: #8000ff;
+  border: none;
+  padding: 0.6rem;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.commentInput button:hover {
+  background-color: #ff00ff;
+  transform: scale(1.1);
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .commentInput input {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .commentInput button {
+    padding: 0.5rem;
+  }
+
+  .comment {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .commentInput input {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .comment {
+    padding: 0.5rem 0.8rem;
+  }
+
+  .commentInput button {
+    padding: 0.45rem;
+  }
+}

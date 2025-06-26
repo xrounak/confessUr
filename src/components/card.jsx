@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './card.module.css';
 
-const Card = ({ title, body, userkey, reactions, tags = [], onDelete }) => {
+const Card = ({ title, body, userkey, reactions, tags = [], onDelete, onClick }) => {
   return (
     <div className={styles.card}>
       <div className={styles.cardInner}>
@@ -9,8 +9,8 @@ const Card = ({ title, body, userkey, reactions, tags = [], onDelete }) => {
           <span className={styles.userkey}>@{userkey}</span>
           <span className={styles.reactions}>❤️ {reactions}</span>
         </div>
-        {title && <h2 className={styles.title}>{title}</h2>}
-        {body && <p className={styles.body}>{body}</p>}
+        {title && <h2 className={styles.title} onClick={onClick}>{title}</h2>}
+        {body && <p className={styles.body} onClick={onClick}>{body}</p>}
 
         {tags.length > 0 && (
           <div className={styles.tagContainer}>
