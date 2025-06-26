@@ -1,7 +1,7 @@
 // src/components/PostPopup.jsx
 
 import React, { useState, useContext } from 'react';
-import styles from './PostPopup.module.css';
+import styles from './postPopup.module.css';
 import { X, Heart, Send } from 'lucide-react';
 import { Postlistcontext } from '../store/post-list-provider';
 import { useComments } from '../store/comment-provider';
